@@ -530,6 +530,9 @@ func (r *ServiceConfigRequest) CacheInfo() cache.RequestInfo {
 	return info
 }
 
+// NOTE: agent/agent.go:persistedServiceConfigResponse is a mirror image of
+// *structs.ServiceConfigResponse without QueryMeta fields. These should be
+// kept in sync.
 type ServiceConfigResponse struct {
 	ProxyConfig     map[string]interface{}
 	UpstreamConfigs map[string]map[string]interface{}
