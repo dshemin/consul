@@ -494,6 +494,11 @@ type ServiceConfigRequest struct {
 	QueryOptions
 }
 
+func (s *ServiceConfigRequest) Clone() *ServiceConfigRequest {
+	s2 := *s
+	return &s2
+}
+
 func (s *ServiceConfigRequest) RequestDatacenter() string {
 	return s.Datacenter
 }
