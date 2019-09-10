@@ -434,14 +434,13 @@ func (w *serviceConfigWatch) handleUpdate(event cache.UpdateEvent) error {
 	select {
 	case <-w.ctx.Done():
 		return nil
+
 	case err := <-registerReq.Reply:
 		if err != nil {
 			return fmt.Errorf("error updating service registration: %v", err)
 		}
 		return nil
 	}
-
-	return nil
 }
 
 type asyncRegisterRequest struct {
