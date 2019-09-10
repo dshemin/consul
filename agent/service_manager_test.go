@@ -6,13 +6,13 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"reflect"
 	"testing"
 
 	"github.com/hashicorp/consul/agent/structs"
 	"github.com/hashicorp/consul/sdk/testutil"
 	"github.com/hashicorp/consul/sdk/testutil/retry"
 	"github.com/hashicorp/consul/testrpc"
-	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
@@ -516,7 +516,7 @@ func TestServiceManager_PersistService_ConfigFiles(t *testing.T) {
 		if current == nil {
 			r.Fatalf("service is missing")
 		}
-		if !assert.ObjectsAreEqual(expectState, current) {
+		if !reflect.DeepEqual(expectState, current) {
 			r.Fatalf("expected: %#v\nactual  :%#v", expectState, current)
 		}
 	})
